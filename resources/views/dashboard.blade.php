@@ -1,7 +1,7 @@
 <x-app-layout>
 <!DOCTYPE html>
 <html>
-<body style="background-color:#8FBC8F;">
+<body style="background-color:#FFF0F5;">
   </body>
 <head>
 	<title>
@@ -27,7 +27,7 @@
 		#navlist a {
 			float:left;
 			display: block;
-			color: #D3D3D3;
+			color: black;
 			text-align: center;
 			padding: 12px;
 			text-decoration: none;
@@ -75,19 +75,24 @@
 	
 	<!-- Navbar items -->
 	<div id="navlist">
+
 		<!-- search bar right align -->
 		<div class="search">
 			
-			<form action="#">
+			<form action="/loginsearch" method="POST">
+				@csrf
 				<input type="text"
 					placeholder=" Search"
-					name="search">
+					name="term">
+				
 				<button>
 					<i class="fa fa-search"
 						style="font-size: 18px;">
 					</i>
 				</button>
+				
 			</form>
+			<a href="/insert">Upload a file</a>
 		</div>
 	</div>
 </body>

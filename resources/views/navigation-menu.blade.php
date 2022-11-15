@@ -95,6 +95,8 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
+
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
@@ -144,6 +146,7 @@
                     <div class="shrink-0 mr-3">
                         <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                     </div>
+                    
                 @endif
 
                 <div>
