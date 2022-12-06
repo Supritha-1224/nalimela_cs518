@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+<style>
+   footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+</style>
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -6,8 +21,10 @@
         <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('register') }}">
+        
             @csrf
 
+           
             <div>
                 <label for="name" value="{{ __('Name') }}">
                 <input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Name">
@@ -27,7 +44,11 @@
                 <label for="password_confirmation" value="{{ __('Confirm Password') }}">
                 <input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
             </div>
-
+            
+            <div class="mt-4">
+                    {!! NoCaptcha::renderJs() !!}
+                    {!! NoCaptcha::display() !!}
+            </div>
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
@@ -50,10 +71,18 @@
                     {{ __('Already registered?') }}
                 </a>
 
+                
+
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
         </form>
     </x-jet-authentication-card>
+
+    
+
+    <footer>
+         copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+    </footer>
 </x-guest-layout>

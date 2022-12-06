@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body style="background-color:#FFF0F5;">
+<button onclick="history.back()">Go Back</button>
   </body>
 <head>
 	<title>
@@ -58,9 +59,23 @@
 			background-color: #D3D3D3;
 			color: black;
 		}
-		</style>
-        </head>
 
+    footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        width: 190%;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+		</style>
+    
+        </head>
+        
 
 
 <?php
@@ -91,7 +106,7 @@ $response = $client->search($params);
         $university = (isset($source['_source']['university']) ? ($source['_source']['university']) : "");
         $degree = (isset($source['_source']['degree']) ? ($source['_source']['degree']) : "");
         $program = (isset($source['_source']['program']) ? ($source['_source']['program']) : ""); 
-        $abstract = (isset($source['_source']['text']) ? ($source['_source']['text']) : ""); 
+        $abstract = (isset($source['_source']['abstract']) ? ($source['_source']['abstract']) : ""); 
         $title = (isset($source['_source']['title']) ? ($source['_source']['title']) : ""); 
         $advisor = (isset($source['_source']['advisor']) ? ($source['_source']['advisor']) : ""); 
         $pdf = (isset($source['_source']['relation_haspart']) ? ($source['_source']['relation_haspart']) : ""); 
@@ -108,5 +123,6 @@ $response = $client->search($params);
         </td>";
       
         echo"</tr>";
-    
+          
 }
+

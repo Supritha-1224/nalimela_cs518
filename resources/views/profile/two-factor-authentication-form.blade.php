@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+<style>
+   footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+</style>
 <x-jet-action-section>
     <x-slot name="title">
         {{ __('TWO FACTOR AUTHENTICATION') }}
@@ -113,5 +127,8 @@
 
             @endif
         </div>
+        
     </x-slot>
+    
 </x-jet-action-section>
+

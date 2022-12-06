@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+<style>
+   footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+</style>
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -43,5 +57,11 @@
                 </div>
             </form>
         </div>
+        
     </x-jet-authentication-card>
+
+
 </x-guest-layout>
+<footer>
+    copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+</footer>

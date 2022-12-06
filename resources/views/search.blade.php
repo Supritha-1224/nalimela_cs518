@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body style="background-color:#FFF0F5;">
+<button onclick="history.back()">Go Back</button>
   </body>
 <head>
 	<title>
@@ -88,6 +89,19 @@
             
 
         }
+
+        footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+        
 	</style>
 </head>
 
@@ -128,7 +142,7 @@
 
 </body>
 
-</html>				
+</html>	
 
 
 <?php
@@ -163,7 +177,7 @@
         else{
         echo
         "<div>
-        <h3><b><i>$total search results for $word</b></i><h3>
+        <h3><b><i>$total search results for $term</b></i><h3>
         <br>
         </div>";
         echo 
@@ -173,8 +187,8 @@
     
     //Highlighting words
 
-    function highlightKeyWord($text, $word){
-        $new_string = preg_replace('#'. preg_quote($word) .'#i', '<span style="background-color: grey;">\\0</span>', $text);
+    function highlightKeyWord($text, $term){
+        $new_string = preg_replace('#'. preg_quote($term) .'#i', '<span style="background-color: grey;">\\0</span>', $text);
         return $new_string;
     }
 
@@ -198,7 +212,8 @@
       <a href='/summarypage/".$etd_file_id."'><b>Title:</b> ".$title." </a><br><br>
       <b>Author(s):</b> ".$author." <br>
       <b>University:</b> ".$university." <br>
-      <b>Year:</b> ".$year." <br><br> 
+      <b>Year:</b> ".$year." <br><br>
+      <b>Abstract:</b>".$abstract."<br> 
       <b>id:</b>".$etd_file_id."<br>
       <form method='GET' action='/download'>
       <input type='hidden' name='q' valu='".$etd_file_id."' />
@@ -220,5 +235,8 @@ for ($page=1;$page<=$number_of_pages;$page++) {
 }
     ?>
 
+<footer>
+    copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+</footer>
 
 

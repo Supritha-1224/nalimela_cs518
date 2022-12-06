@@ -14,6 +14,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Auth;
+use view;
+use session;
 
 require '\xampp\htdocs\web\vendor\autoload.php';
 $client = Elasticsearch\ClientBuilder::create()->build();
@@ -175,10 +177,81 @@ public function data($id_abstract)
         
         readfile($file_name);
     }
+    public function api_token()
+    {
+        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+            $users = Auth::user();
+            if ($users->getRememberToken() == NULL) {
+                $token = Str::random(30);
+                $users->setRememberToken($token);
+                $users->save();
+            }
+            return response()->json(['key' => $users->getRememberToken()], 200);
+        }
+        else{
+            return response()->json(['error'=>'Unauthorised'], 401);
+        }
+        
+    }
+    public function sear_api()
+    {
+        $terms = request('query');
+        $limit = request('W');
+        $key = request('key');
+        $client =  ClientBuilder::create()->build();
+        $resultids = (array)DB::select('select remember_token from users');
+        $resultstr = json_encode($resultids);
+        
+        if ($key != NULL && (str_contains($resultstr, $key) )) {
+
+            $params = [
+              'index' => 'supritha',
+              'from' => 0,
+              'size' => $limit,
+              'type' => '_doc',
+              'body' => [
+                  'query' => [
+                      'multi_match' => [
+                          'query' => $terms,
+                          'fields' => ['author','title','$etd_file_id','$year','university','degree','program','abstract','advisor','wiki_terms'],
+
+          ]
+                      ]
+              ]
+                      ];
+                      $results = $client->search($params);
+                      $count = $results['hits']['total']['value'];
+                      $res = $results['hits']['hits'];
+                      $rank = 1;
+                     foreach( $res as $r)
+                      {   
+                        $title[$rank]['title'] = $results['hits']['hits'][$rank-1]['_source']['title'];
+                        $author[$rank]['author'] = $results['hits']['hits'][$rank-1]['_source']['author'];
+                        $etd[$rank]['etd_file_id'] = $results['hits']['hits'][$rank-1]['_source']['etd_file_id'];
+                        $year[$rank]['year'] = $results['hits']['hits'][$rank-1]['_source']['year'];
+                        $univ[$rank]['university'] = $results['hits']['hits'][$rank-1]['_source']['university'];
+                        $deg[$rank]['degree'] = $results['hits']['hits'][$rank-1]['_source']['degree'];
+                        $prog[$rank]['program'] = $results['hits']['hits'][$rank-1]['_source']['program'];
+                        $abs[$rank]['abstract'] = $results['hits']['hits'][$rank-1]['_source']['abstract'];
+                        $wiki[$rank]['wiki_terms'] = $results['hits']['hits'][$rank-1]['_source']['wiki_terms'];
+                        $rank+=1;
+                    }
+                    return response()->json(['response'=>$title,$author,$etd,$year,$univ,$deg,$prog,$abs,$wiki], 200);
+                } else {
+                    return response()->json(['error' => 'You are not Authorised to Access query'.$terms.',since there is no key.'], 401);
+          }
+        }
+          }
 
     
+    
 
-}
+    
+           
+            
+
+
+
 
 
  

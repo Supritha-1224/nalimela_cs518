@@ -70,10 +70,21 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
+
+footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
 </style>
 </head>
 <body>
-
+<button onclick="history.back()">Go Back</button>
 <h2>Add data</h2>
 
 <div class="container">
@@ -163,3 +174,7 @@ input[type=submit]:hover {
 </form>
 </body>
 </html>
+
+<footer>
+    copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+</footer>

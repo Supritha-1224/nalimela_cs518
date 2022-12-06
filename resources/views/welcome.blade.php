@@ -7,7 +7,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="stylesheet" href="style.css" />
-   <title>Document</title>
+   <title>Digital Library</title>
    @section('head')
    <link rel="stylesheet" href=
 "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,10 +50,15 @@
                       float: left;
                       width: 80%;
                       background: #f1f1f1;
+                      gap: 1em;
+                      justify-content: space-between;
 		                }
                     .search{
 			              float: center;
 			              margin:1px;
+                    padding: 10px;
+                    gap: 1em;
+                    justify-content: space-between;
 		                }
 		
 		                .search button{
@@ -66,10 +71,28 @@
                     border: 1px solid grey;
                     border-left: none; /* Prevent double borders */
                     cursor: pointer;
+                    gap: 1em;
+                    justify-content: space-between;
 		                }
+
+                    footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        
+    }
         </style>
  </head>
  <body>
+   <div>
+       <h1 class="text-4xl font-semibold">
+           Digital Library
+        </h1>
+    </div>       
    <nav class="navbar">
      <!-- NAVIGATION MENU -->
      <ul class="nav-links">
@@ -92,10 +115,26 @@
 					</i>
 				</button>
 			</form>
+      
 		</div>
 	</div>
  </body>
 </html>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+  
+
+<footer>
+         copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+</footer>
 
 
 

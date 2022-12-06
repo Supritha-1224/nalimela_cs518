@@ -68,6 +68,17 @@
 			border: none;
 			cursor: pointer;
 		}
+
+		footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
 	</style>
 </head>
 
@@ -92,11 +103,37 @@
 				</button>
 				
 			</form>
-			<a href="/insert">Upload a file</a>
+			<a href="/insert">User Details</a>
 		</div>
 	</div>
 </body>
 
-</html>				
+
+</html>	
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<footer>
+         copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+</footer>
+
 
 </x-app-layout>
+

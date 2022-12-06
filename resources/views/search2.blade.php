@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <body style="background-color:#FFF0F5;">
+
   </body>
+  
 <head>
 	<title>
 		Login System
@@ -85,6 +87,17 @@
             border: none;
 			cursor: pointer;
 		}
+
+        footer{
+        background: grey;
+        font-size: 18px;
+        padding: 35px;
+        text-align: center;
+        position: adsolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
 	</style>
 </head>
 
@@ -101,14 +114,20 @@
 					name="term"
                     value="<?php echo $query_string?>">
                     {!! csrf_field() !!}
+                    
 				<button>
 					<i class="fa fa-search"
 						style="font-size: center; color:black;">
 					</i>
+                    
 				</button>
+                
 			</form>
+            
 		</div>
+        <button onclick="history.back()">Go Back</button>
 	</div>
+
 </body>
 
 </html>				
@@ -169,7 +188,7 @@
         $university = (isset($source['_source']['university']) ? highlightKeyWord($source['_source']['university'],$term) : "");
         $degree = (isset($source['_source']['degree']) ? highlightKeyWord($source['_source']['degree'],$term) : "");
         $program = (isset($source['_source']['program']) ? highlightKeyWord($source['_source']['program'],$term) : ""); 
-        $abstract = (isset($source['_source']['text']) ? highlightKeyWord($source['_source']['text'], $term) : ""); 
+        $abstract = (isset($source['_source']['abstract']) ? highlightKeyWord($source['_source']['abstract'], $term) : ""); 
         $title = (isset($source['_source']['title']) ? highlightKeyWord($source['_source']['title'], $term) : ""); 
         $advisor = (isset($source['_source']['advisor']) ? highlightKeyWord($source['_source']['advisor'], $term): ""); 
         $pdf = (isset($source['_source']['relation_haspart']) ? highlightKeyWord($source['_source']['relation_haspart'], $term): ""); 
@@ -181,7 +200,8 @@
       <a href='/summarypage2/".$etd_file_id."'><b>Title:</b> ".$title." </a><br><br>
       <b>Author(s):</b> ".$author." <br>
       <b>University:</b> ".$university." <br>
-      <b>Year:</b> ".$year." <br><br> 
+      <b>Year:</b> ".$year." <br><br>
+      <b>Abstract:</b>".$abstract."<br> 
       <b>id:</b>".$etd_file_id."<br>
       <form method='GET' action='/download'>
       <input type='hidden' name='q' valu='".$etd_file_id."' />
@@ -195,3 +215,7 @@
       echo "</tbody></table>";
 }
     ?>
+
+<footer>
+    copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+</footer>
